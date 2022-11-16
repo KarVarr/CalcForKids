@@ -9,8 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var numberFromScreen: Double = 0
-    var firstNumber:Double = 0
+    var numberFromScreen: Int = 0
+    var firstNumber:Int = 0
     var operation: Int = 0
     var sing:Bool = false
     
@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     
     @IBAction func buttons(_ sender: UIButton) {
         if resultLabel.text != "" &&  sender.tag != 10 && sender.tag != 15 {
-            firstNumber = Double(resultLabel.text!)!
+            firstNumber = Int(resultLabel.text!)!
             if sender.tag == 11 { //divide
                 resultLabel.text = "/"
             } else if sender.tag == 12 { // multiply
@@ -48,18 +48,18 @@ class ViewController: UIViewController {
             } else if operation == 12 {
                 resultLabel.text = String(firstNumber * numberFromScreen)
             } else if operation == 13 {
-                resultLabel.text = String(firstNumber + numberFromScreen)
-            } else if operation == 14 {
                 resultLabel.text = String(firstNumber - numberFromScreen)
+            } else if operation == 14 {
+                resultLabel.text = String(firstNumber + numberFromScreen)
             }
             
+            
         } else if sender.tag == 10 {
-            resultLabel.text = "0"
+            resultLabel.text = ""
             firstNumber = 0
             numberFromScreen = 0
             operation = 0
         }
-        print(sender.tag)
     }
     
     @IBAction func digits(_ sender: UIButton) {
@@ -69,7 +69,7 @@ class ViewController: UIViewController {
         } else {
             resultLabel.text = String(resultLabel.text!) + String(sender.tag)
         }
-        numberFromScreen = Double(resultLabel.text!)!
+        numberFromScreen = Int(resultLabel.text!)!
     }
     
     
